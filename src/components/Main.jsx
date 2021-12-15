@@ -11,7 +11,8 @@ export default class Input extends Component{
    
 
     async searchCep(){
-        const field = document.querySelector('input').value
+        const field = document.querySelector('input').value.replace('-','')
+        
         const url = `https://viacep.com.br/ws/${field}/json/ `    
         let result 
       await fetch(url)
@@ -25,10 +26,10 @@ export default class Input extends Component{
                  .then(resp => {
                     this.mountResult( this.state.response)
                  })
-                 .catch(err => this.mountError(err))
+                 .catch(err => this.mountError(err, field))
                     
     }
-
+ 
     mountResult(e){
         const resultHtml = document.querySelector('.result')
         resultHtml.innerHTML = 
@@ -47,18 +48,19 @@ export default class Input extends Component{
         </div>`
         this.startState()
     }
-    mountError(e){
+    mountError(err, field = '1'){
         const resultHtml = document.querySelector('.result')
+        field.replace('-', '')
+        let msgError 
+        !isNaN(field) ? msgError = 'CEP não encontrado!' : msgError = 'CEP digitado invalido!' 
+      
         resultHtml.innerHTML = 
-        ` <div className="result">
-             <h2 id="error">CEP não encontrado!</h2>
-         </div>`
-        console.log(e)
+            ` <div className="result">
+                 <h2 id="error">${msgError}</h2>
+             </div>`
+        console.log('Erro 400 na requisição ')
     }
 
-    startState(){
-        this.state = {...inicialState}
-    }
     render(){
         return(
             <Fragment>
