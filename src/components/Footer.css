@@ -1,0 +1,16 @@
+.footer{
+    background-color: rgb(68, 63, 63);
+    width: 100vw;
+    text-align: center;
+    font-size: .9rem;
+    color: #fff;
+    bottom: 0;
+    position: fixed !important;
+}
+.footer a{
+    color:#fff;
+    text-decoration: none;
+}
+.footer a:hover{
+    font-size: 1.1rem;
+}

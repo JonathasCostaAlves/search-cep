@@ -1,0 +1,36 @@
+.field{
+    display: flex;
+    align-items: center;
+    
+}
+
+
+.field input{
+    height: 30px;
+    width: 30vw;
+    border-radius: 8px ;
+    border-color: aliceblue;
+    
+}
+.field input:focus,
+.field input:active{
+    border-color: #0082C8;
+    outline: none;
+    outline-style: none;
+}
+
+.field input[type="text"]{
+    color: #0082C8;
+    font-weight: 700;
+}
+
+.field button{
+    height:36px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color:#fff;
+}
+.field button:hover{
+    color: rgba(31, 29, 29, 0.753);
+}
